@@ -8,9 +8,9 @@ function setup(){
     HEIGHT = 500;
     createCanvas(WIDTH, HEIGHT);
     imageMode(CORNERS);
-    rectMode(CENTER);
+    // rectMode(CENTER);
 
-    T = new TileManager(4, 4, 25, 25);
+    T = new TileManager(10, 12, 10, 10);
 }
 
 function draw(){
@@ -19,7 +19,8 @@ function draw(){
     image(img, 0, 0, WIDTH - 1, HEIGHT - 1);
     // loadPixels(); // updates the pixels array
     
-    T.drawExteriorBufferBox();
+    // T.drawExteriorBufferBox();
+    T.drawInteriorFields();
 }
 
 // laundry list
@@ -57,6 +58,10 @@ class TileManager {
         this.oY = this.exteriorBuff;
         this.width = WIDTH - (2 * this.exteriorBuff);
         this.height = HEIGHT - (2 * this.exteriorBuff);
+        this.xSideLength = (this.width - ((this.cols - 1) * this.interiorBuff)) / this.cols;
+        this.ySideLength = (this.height - ((this.rows - 1) * this.interiorBuff)) / this.rows;
+
+
     }
 
     wireframe() {
@@ -92,6 +97,17 @@ class TileManager {
         // draw horizontal lines
         line(this.exteriorBuff, this.exteriorBuff, WIDTH - this.exteriorBuff, this.exteriorBuff);
         line(this.exteriorBuff, HEIGHT - this.exteriorBuff, WIDTH - this.exteriorBuff, HEIGHT - this.exteriorBuff)
+    }
+    
+    drawInteriorFields(){
+        noStroke();
+
+        for(let x = this.oX; x <= this.width; x = x + (this.xSideLength + this.interiorBuff)){
+            for(let y = this.oY; y <= this.height; y = y + (this.ySideLength + this.interiorBuff)){
+                fill(0, x % this.width, y % this.height, 200)
+                rect(x, y, this.xSideLength, this.ySideLength);
+            }
+        }
     }
 
 }
