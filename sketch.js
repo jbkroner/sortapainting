@@ -51,6 +51,12 @@ class TileManager {
         this.rows = rows;
         this.exteriorBuff = exteriorBuff;
         this.interiorBuff = interiorBuff;
+
+        // calculate and store relative (0,0), width, height
+        this.oX = this.exteriorBuff;
+        this.oY = this.exteriorBuff;
+        this.width = WIDTH - (2 * this.exteriorBuff);
+        this.height = HEIGHT - (2 * this.exteriorBuff);
     }
 
     wireframe() {
