@@ -9,7 +9,8 @@ function setup(){
     createCanvas(WIDTH, HEIGHT);
     imageMode(CORNERS);
     rectMode(CENTER);
-    T = new TileManager(4, 4, 10, 10);
+
+    T = new TileManager(4, 4, 25, 25);
 }
 
 function draw(){
@@ -18,8 +19,7 @@ function draw(){
     image(img, 0, 0, WIDTH - 1, HEIGHT - 1);
     // loadPixels(); // updates the pixels array
     
-    T.wireframe();
-    
+    T.drawExteriorBufferBox();
 }
 
 // laundry list
@@ -62,6 +62,7 @@ class TileManager {
             for(let j = this.exteriorBuff; j < HEIGHT - this.exteriorBuff; j = j + (HEIGHT / this.rows)){
                 stroke(0, 255, 0);
                 line(0, j, WIDTH, j);
+                // rectangle 
                 rect(i, j, 20, 20);
             }
         }
@@ -72,8 +73,29 @@ class TileManager {
             stroke(255,0,0);
             line(i, 0, i, HEIGHT);
         }
+    }
+    
+    // draw a box aroudn the inside field with dimensions (width - (2 * eb)) * (height - (2 * eb))
+    drawExteriorBufferBox(){
+        stroke(0, 255, 0);
 
+        // draw vert lines
+        line(this.exteriorBuff, this.exteriorBuff, this.exteriorBuff, HEIGHT - this.exteriorBuff);
+        line(WIDTH - this.exteriorBuff, this.exteriorBuff, WIDTH - this.exteriorBuff, HEIGHT - this.exteriorBuff);
 
+        // draw horizontal lines
+        line(this.exteriorBuff, this.exteriorBuff, WIDTH - this.exteriorBuff, this.exteriorBuff);
+        line(this.exteriorBuff, HEIGHT - this.exteriorBuff, WIDTH - this.exteriorBuff, HEIGHT - this.exteriorBuff)
     }
 
 }
+
+
+
+
+
+
+
+
+
+
