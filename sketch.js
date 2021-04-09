@@ -64,8 +64,7 @@ class TileManager {
 
         // store fields here
         this.fields = []
-
-
+        this.genInteriorFields();
     }
 
     wireframe() {
@@ -100,12 +99,14 @@ class TileManager {
     drawInteriorFields(){
         noStroke();
 
-        for(let x = this.oX; x <= this.width; x = x + (this.xSideLength + this.interiorBuff)){
-            for(let y = this.oY; y <= this.height; y = y + (this.ySideLength + this.interiorBuff)){
-                fill(0, x % this.width, y % this.height, 200)
-                rect(x, y, this.xSideLength, this.ySideLength);
-            }
-        }
+        // for(let x = this.oX; x <= this.width; x = x + (this.xSideLength + this.interiorBuff)){
+        //     for(let y = this.oY; y <= this.height; y = y + (this.ySideLength + this.interiorBuff)){
+        //        fill(0, x % this.width, y % this.height, 200)
+        //        rect(x, y, this.xSideLength, this.ySideLength);
+        //    }
+        // }
+       
+        this.fields.forEach(field => field.drawDebug());
     }
     
     // populate this.fields()
@@ -125,6 +126,12 @@ class Field {
         this.oY = oY; 
         this.xSideLength = xSideLength;
         this.ySideLength = ySideLength;
+    }
+
+    drawDebug(){
+        stroke(0,255,0);
+        fill(255,0,0);
+        rect(this.oX, this.oY, this.xSideLength, this.ySideLength);
     }
 }
      
