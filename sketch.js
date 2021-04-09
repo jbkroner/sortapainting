@@ -11,8 +11,6 @@ function setup(){
     // rectMode(CENTER);
 
     T = new TileManager(10, 12, 10, 10);
-    T2 = new TileManager(12, 14, 5, 12);
-    T3 = new TileManager(15, 20, 2, 2);
 
 }
 
@@ -24,8 +22,6 @@ function draw(){
     
     // T.drawExteriorBufferBox();
     T.drawInteriorFields();
-    T2.drawInteriorFields();
-    T3.drawInteriorFields();
 }
 
 // laundry list
@@ -84,12 +80,6 @@ class TileManager {
         }
     }
 
-    wireframe2(){
-        for(let i = 0; i < this.cols; ++i) {
-            stroke(255,0,0);
-            line(i, 0, i, HEIGHT);
-        }
-    }
     
     // draw a box aroudn the inside field with dimensions (width - (2 * eb)) * (height - (2 * eb))
     drawExteriorBufferBox(){
@@ -103,7 +93,7 @@ class TileManager {
         line(this.exteriorBuff, this.exteriorBuff, WIDTH - this.exteriorBuff, this.exteriorBuff);
         line(this.exteriorBuff, HEIGHT - this.exteriorBuff, WIDTH - this.exteriorBuff, HEIGHT - this.exteriorBuff)
     }
-    
+     
     drawInteriorFields(){
         noStroke();
 
@@ -114,9 +104,8 @@ class TileManager {
             }
         }
     }
-
 }
-
+     
 
 
 
