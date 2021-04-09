@@ -104,6 +104,19 @@ class TileManager {
             }
         }
     }
+
+    genInteriorFields(){
+
+    }
+}
+
+class Field {
+    constructor(oX, oY, xSideLength, ySideLength){
+        this.oX = oX;
+        this.oY = oY; 
+        this.xSideLength = xSideLength;
+        this.ySideLength = ySideLength;
+    }
 }
      
 
