@@ -62,6 +62,9 @@ class TileManager {
         this.xSideLength = (this.width - ((this.cols - 1) * this.interiorBuff)) / this.cols;
         this.ySideLength = (this.height - ((this.rows - 1) * this.interiorBuff)) / this.rows;
 
+        // store fields here
+        this.fields = []
+
 
     }
 
@@ -104,9 +107,15 @@ class TileManager {
             }
         }
     }
-
+    
+    // populate this.fields()
     genInteriorFields(){
-
+        for(let x = this.oX; x <= this.width; x = x + (this.xSideLength + this.interiorBuff)){
+            for(let y = this.oY; y <= this.height; y = y + (this.ySideLength + this.interiorBuff)){
+                let field = new Field(x, y, this.xSideLength, this.ySideLength);
+                this.fields.push(field);
+            }
+        }
     }
 }
 
