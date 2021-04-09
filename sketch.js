@@ -67,21 +67,6 @@ class TileManager {
         this.genInteriorFields();
     }
 
-    wireframe() {
-        console.log(`TileManager: Wireframing tilegrid...`);
-        for(let i = this.exteriorBuff; i < WIDTH - this.exteriorBuff; i = i + (WIDTH / this.cols)){
-            stroke(255, 0, 0);
-            line(i, 0, i, HEIGHT);
-
-            for(let j = this.exteriorBuff; j < HEIGHT - this.exteriorBuff; j = j + (HEIGHT / this.rows)){
-                stroke(0, 255, 0);
-                line(0, j, WIDTH, j);
-                // rectangle 
-                rect(i, j, 20, 20);
-            }
-        }
-    }
-
     
     // draw a box aroudn the inside field with dimensions (width - (2 * eb)) * (height - (2 * eb))
     drawExteriorBufferBox(){
