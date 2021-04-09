@@ -11,6 +11,9 @@ function setup(){
     // rectMode(CENTER);
 
     T = new TileManager(10, 12, 10, 10);
+    T2 = new TileManager(12, 14, 5, 12);
+    T3 = new TileManager(15, 20, 2, 2);
+
 }
 
 function draw(){
@@ -21,6 +24,8 @@ function draw(){
     
     // T.drawExteriorBufferBox();
     T.drawInteriorFields();
+    T2.drawInteriorFields();
+    T3.drawInteriorFields();
 }
 
 // laundry list
