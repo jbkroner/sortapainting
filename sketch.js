@@ -82,15 +82,6 @@ class TileManager {
     }
      
     drawInteriorFields(){
-        noStroke();
-
-        // for(let x = this.oX; x <= this.width; x = x + (this.xSideLength + this.interiorBuff)){
-        //     for(let y = this.oY; y <= this.height; y = y + (this.ySideLength + this.interiorBuff)){
-        //        fill(0, x % this.width, y % this.height, 200)
-        //        rect(x, y, this.xSideLength, this.ySideLength);
-        //    }
-        // }
-       
         this.fields.forEach(field => field.drawDebug());
     }
     
@@ -105,6 +96,8 @@ class TileManager {
     }
 }
 
+// a field is like a mini-canvas! it has a '(0,0)' at (oX, oY).  its 
+// dimensions are xSideLength by ySideLength.
 class Field {
     constructor(oX, oY, xSideLength, ySideLength){
         this.oX = oX;
